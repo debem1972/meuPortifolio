@@ -1,0 +1,40 @@
+#logo {
+    width: 40em;
+    height: 40em;
+    border-radius: 50%;
+}
+
+
+
+.typing-effect {
+    font-family: 'Courier New', monospace;
+    font-size: 24px;
+    color: #ffffff;
+    border-right: 2px solid #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 8s steps(89) 0.5s 1 normal both, blink-caret 0.5s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: white;
+    }
+}
