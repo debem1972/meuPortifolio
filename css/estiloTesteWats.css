@@ -37,28 +37,31 @@
     width: 40em;
     height: 40em;
     border-radius: 50%;
-    transition: all 0.3s ease;
+    position: relative;
+    transition: transform 0.3s ease;
 }
 
 /* Classe aplicada quando a logo atinge o topo */
 .fixed-logo {
+    /*display: inline-block;*/
     position: fixed;
-    top: 10px;
-    left: 10px;
-    /*width: 100vw;*/
-    /* Mantém a imagem em 5em ao atingir o topo */
+    top: 0;
+    left: 0;
     transform: scale(1);
-    /*border-radius: 50%;*/
     transition: all 0.4s ease;
 }
 
-.logo img{
-    transform:scale(1);
+
+
+
+.logo img {
+    transform: scale(1);
 }
+
 
 .content {
     border: 2px solid blue;
     position: relative;
-    top: 120px;
+    margin-top: 180px;
     padding: 20px;
 }

@@ -57,9 +57,10 @@
 
 //---------------------------------------------------------------------
 // JavaScript para o efeito de rolagem
-window.addEventListener('scroll', function() {
+/*window.addEventListener('scroll', function() {
     const logo = document.querySelector('#logo');
     const logoContainer = document.querySelector('.logo');
+    
     
     // Calcula o valor de scale baseado no scroll
     const startPos = 10; // Posição onde a escala começa
@@ -86,6 +87,56 @@ window.addEventListener('scroll', function() {
     } else {
         logoContainer.classList.remove('fixed-logo');
     }
+});*/
+
+//-------------------------------------------------------------------------
+// JavaScript para o efeito de rolagem
+window.addEventListener('scroll', function () {
+    const logo = document.querySelector('#logo');
+    const logoContainer = document.querySelector('.logo');
+
+    // Calcula o valor de scale baseado no scroll
+    const startPos = 10;  // Posição onde a escala começa
+    const endPos = 350;   // Posição onde a escala termina
+    const scrollPos = window.scrollY;
+
+    console.log(scrollPos);
+
+    // Verifica a posição do scroll e ajusta a escala da imagem
+    let scale = 1;
+    if (scrollPos >= startPos && scrollPos <= endPos) {
+        scale = 1 - (scrollPos - startPos) / (endPos - startPos) * (1 - 0.5);
+    } else if (scrollPos > endPos) {
+        scale = 0.5;
+    }
+
+    // Aplica a transformação na imagem (escala e deslocamento no eixo X)
+    const translateX = Math.min(scrollPos / 2, 50); // Limita o deslocamento no eixo X a 10px
+    logo.style.transform = `scale(${scale}) translateX(${translateX}px)`;
+
+    // Ajusta a altura da div logo conforme a escala da imagem
+    logoContainer.style.height = `${logo.offsetHeight * scale}px`;
+
+    // Monitora a posição da div logo e aplica a classe fixed-logo quando atinge o topo
+    const logoRect = logoContainer.getBoundingClientRect();
+    if (logoRect.top <= 0) {
+        logoContainer.classList.add('fixed-logo');
+        logoContainer.style.display = 'block';  // Muda de flex para block
+
+        // Adiciona margens para ajustar a posição da imagem ao atingir o topo
+        logo.style.margimleft = '10px';
+        logo.style.margimtop = '10px';
+        logo.style.position = 'relative';
+
+    } else {
+        logoContainer.classList.remove('fixed-logo');
+        logoContainer.style.display = 'flex';
+
+        // Remove margens quando a logo não está no topo
+        logo.style.marginleft = '0px';
+        logo.style.margintop = '0px';
+    }
 });
+
 
 
