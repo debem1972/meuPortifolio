@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Centralizando a div logo */
+.container {
+    border: 2px solid black;
+    background-color: #48E600;
+    width: 100%;
+    height: 150vh;
+    /* Aumenta a altura para que o efeito de scroll funcione */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+
+/*A class .logo inicia centralizada */
+.logo {
+    border: 2px solid red;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*position: relative;*/
+    transition: all 0.3s ease;
+
+}
+
+#logo {
+    width: 40em;
+    height: 40em;
+    border-radius: 50%;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+/* Classe aplicada quando a logo atinge o topo */
+.fixed-logo {
+    /*display: inline-block;*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: scale(1);
+    transition: all 0.4s ease;
+}
+
+
+
+
+.logo img {
+    transform: scale(1);
+}
+
+
+.content {
+    border: 2px solid blue;
+    position: relative;
+    margin-top: 180px;
+    padding: 20px;
+}
