@@ -1,23 +1,41 @@
-* {
+body,
+html {
     margin: 0;
     padding: 0;
+    height: 200%;
+    /* Para permitir o scroll */
     box-sizing: border-box;
-}
-
-
-body {
     overflow: auto;
+    /* Para evitar overflow escondido */
 }
-
 
 .container-fluid {
     height: 100vh;
 }
 
-/*Configuração da div class .logo para o seu surgimentop suave.*/
+/* Configuração inicial do h3 */
+.title {
+    display: none;
+    /*margin-top: 20px;
+    /* Espaço abaixo da logo */
+    /*font-size: 3em;
+    opacity: 0;*/
+    /* Começa invisível */
+    transition: all 0.5s ease-in-out;
+    /* Transição suave */
+}
+
+/* Efeito de scroll para o h3 */
+.title-small {
+    font-size: 1.5em;
+    margin-left: 10px;
+    opacity: 1;
+    /* Visível após o scroll */
+}
+
+/* Configuração da div class .logo para o surgimento suave. */
 .logo {
     position: relative;
-    /*Necessário esta position para que o pseudo elemento before o enxergue como elemento pai*/
     opacity: 0;
     transition: opacity 2s ease-in-out;
     z-index: 1;
@@ -31,49 +49,54 @@ body {
     transform: translate(-50%);
     width: 100%;
     height: 20px;
-    background: rgba(0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 50%;
-    /*z-index: -1;*/
     filter: blur(10px);
 }
 
 .logo img {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6),
-        0 10px 20px rgba(0, 0, 0, 0.4),
-        0 15px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6), 0 10px 20px rgba(0, 0, 0, 0.4), 0 15px 25px rgba(0, 0, 0, 0.3);
     border-radius: 5px;
 }
 
-
-
-
-/*A Imagem da logo*/
+/* A Imagem da logo */
 #logo {
     width: 40em;
     height: 40em;
-    border-radius: 50%;    
-    transition: all 0.5s ease-in-out;
-    /* Animação suave */
+    border-radius: 50%;
+    /*transform:opacity(1);*/
+    transition: all 0.9s;
 }
 
+.avatar{
+    /*position:absolute;*/
+    /*width: 40em;
+    height: 40em;
+    border-radius: 50%;
+    transform:opacity(1);*/
+    /*transition: all 0.9s;*/
+    margin-top:20%;
+    margin-left:36%;
 
-.logo-small {
+}
+
+/*.logo-small {
     width: 5em;
     height: 5em;
     position: fixed;
-    /* Para fixar a logo enquanto rola a página */
     top: 10px;
     left: 10px;
     transform: none;
-    /* Remove o translate quando fica pequeno */
     opacity: 1;
-    /* Garante que a logo fique visível */
     transition: all 0.5s ease-in-out;
-}
+}*/
 
-
-
-
+/* Ajuste para logo e título pequenos */
+/*.logo-small~.title-small {
+    font-size: 1.5em;
+    margin-left: 10px;
+    opacity: 1;
+}*/
 
 .typing-effect {
     font-family: 'Courier New', monospace;
