@@ -1,0 +1,395 @@
+Claro! Vou adicionar essa funcionalidade ao projeto. Para isso, vamos precisar modificar o HTML, adicionar mais CSS e
+incluir um pouco de JavaScript para controlar as animações e o comportamento do scroll. Aqui está o código atualizado:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de Daniel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--secondary-color);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .bg-primary-custom {
+            background-color: var(--primary-color);
+        }
+
+        .text-primary-custom {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .skill-item {
+            transition: transform 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card img {
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        #intro-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1s ease-in-out;
+        }
+
+        #intro-text {
+            color: white;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        #cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2em;
+            background-color: white;
+            margin-left: 5px;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        #logo {
+            width: 40em;
+            height: 40em;
+            border-radius: 50%;
+            background-color: white;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: all 0.5s ease-in-out;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.3));
+            z-index: 999;
+        }
+
+        #main-content {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="intro-screen">
+        <p id="intro-text"></p>
+    </div>
+    <div id="logo"></div>
+
+    <div id="main-content">
+        <!-- Resto do conteúdo do portfólio aqui -->
+        <!-- (Mantenha todo o conteúdo anterior aqui, desde a <nav> até o <footer>) -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary-custom fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">Meu Portfólio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#habilidades">Habilidades</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#projetos">Projetos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section id="home" class="hero">
+            <div class="container text-center">
+                <h1 class="mb-4">Olá, eu sou <span class="text-primary-custom">Seu Nome</span></h1>
+                <p class="lead mb-4">Desenvolvedor Web Full Stack</p>
+                <a href="#contato" class="btn btn-light btn-lg">Entre em Contato</a>
+            </div>
+        </section>
+
+        <section id="sobre" class="py-5">
+            <div class="container">
+                <h2 class="section-title">Sobre Mim</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Sou um desenvolvedor web apaixonado por criar experiências digitais incríveis. Com
+                            experiência em
+                            front-end e back-end, estou sempre buscando aprender novas tecnologias e aprimorar minhas
+                            habilidades.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p>Minha abordagem é centrada no usuário, focando em designs responsivos e intuitivos. Acredito
+                            que
+                            a colaboração é fundamental para o sucesso de qualquer projeto.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="habilidades" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="section-title">Minhas Habilidades</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card skill-item">
+                            <div class="card-body text-center">
+                                <i class="fas fa-code fa-3x mb-3 text-primary-custom"></i>
+                                <h5 class="card-title">HTML/CSS</h5>
+                                <p class="card-text">Criação de layouts responsivos e estilização avançada.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card skill-item">
+                            <div class="card-body text-center">
+                                <i class="fab fa-js fa-3x mb-3 text-primary-custom"></i>
+                                <h5 class="card-title">JavaScript</h5>
+                                <p class="card-text">Desenvolvimento de aplicações web interativas e dinâmicas.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card skill-item">
+                            <div class="card-body text-center">
+                                <i class="fab fa-react fa-3x mb-3 text-primary-custom"></i>
+                                <h5 class="card-title">React</h5>
+                                <p class="card-text">Construção de interfaces de usuário modernas e eficientes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos" class="py-5">
+            <div class="container">
+                <h2 class="section-title">Projetos Recentes</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card project-card">
+                            <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Projeto 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Projeto 1</h5>
+                                <p class="card-text">Uma breve descrição do projeto e das tecnologias utilizadas.</p>
+                                <a href="#" class="btn btn-primary">Ver Projeto</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card project-card">
+                            <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Projeto 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Projeto 2</h5>
+                                <p class="card-text">Uma breve descrição do projeto e das tecnologias utilizadas.</p>
+                                <a href="#" class="btn btn-primary">Ver Projeto</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card project-card">
+                            <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Projeto 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Projeto 3</h5>
+                                <p class="card-text">Uma breve descrição do projeto e das tecnologias utilizadas.</p>
+                                <a href="#" class="btn btn-primary">Ver Projeto</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="section-title">Entre em Contato</h2>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Seu Nome">
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Seu Email">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="4" placeholder="Sua Mensagem"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <p>Sinta-se à vontade para entrar em contato comigo para discutir oportunidades de trabalho,
+                            colaborações ou apenas para trocar ideias sobre desenvolvimento web.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-envelope me-2"></i> seuemail@exemplo.com</li>
+                            <li><i class="fas fa-phone me-2"></i> (00) 12345-6789</li>
+                            <li><i class="fas fa-map-marker-alt me-2"></i> Sua Cidade, Estado</li>
+                        </ul>
+                        <div class="mt-4">
+                            <a href="#" class="me-3 text-dark"><i class="fab fa-github fa-2x"></i></a>
+                            <a href="#" class="me-3 text-dark"><i class="fab fa-linkedin fa-2x"></i></a>
+                            <a href="#" class="text-dark"><i class="fab fa-twitter fa-2x"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-dark text-white text-center py-3">
+            <p>&copy; 2024 Seu Nome. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const introText = "Olá! Eu sou o Daniel! Seja bem vindo ao meu portfólio!";
+            const introElement = document.getElementById('intro-text');
+            const logo = document.getElementById('logo');
+            const mainContent = document.getElementById('main-content');
+            const introScreen = document.getElementById('intro-screen');
+
+            let i = 0;
+            function typeWriter() {
+                if (i < introText.length) {
+                    introElement.innerHTML += introText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                } else {
+                    introElement.innerHTML += '<span id="cursor"></span>';
+                    setTimeout(showLogo, 3000);
+                }
+            }
+
+            function showLogo() {
+                logo.style.transform = 'translate(-50%, -50%) scale(1)';
+                setTimeout(() => {
+                    window.addEventListener('scroll', handleScroll);
+                    mainContent.style.opacity = '1';
+                    introScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        introScreen.style.display = 'none';
+                    }, 1000);
+                }, 500);
+            }
+
+            let lastScrollTop = 0;
+            function handleScroll() {
+                let st = window.pageYOffset || document.documentElement.scrollTop;
+                if (st > lastScrollTop) {
+                    // Scrolling down
+                    if (st > 50) {
+                        logo.style.width = '5em';
+                        logo.style.height = '5em';
+                        logo.style.top = '5px';
+                        logo.style.left = '5px';
+                        logo.style.transform = 'translate(0, 0)';
+                    }
+                }
+                lastScrollTop = st <= 0 ? 0 : st;
+            }
+
+            typeWriter();
+        });
+    </script>
+</body>
+
+</html>
+```
+
+<!--Neste código atualizado, adicionei as seguintes funcionalidades:
+
+1. Uma tela de introdução com fundo sólido na cor primária.
+2. O texto "Olá! Eu sou o Daniel! Seja bem vindo ao meu portfólio!" é digitado na tela com um efeito de máquina de
+escrever.
+3. Após o texto ser digitado, um cursor pisca por 3 segundos.
+4. Uma logo redonda (representada por um círculo branco) aparece suavemente no centro da tela.
+5. Ao rolar a página, a logo se move para o canto superior esquerdo e diminui de tamanho.
+6. A tela de introdução desaparece gradualmente, revelando o conteúdo principal do portfólio.
+
+Para personalizar ainda mais:
+
+1. Substitua o conteúdo de `#logo` por sua própria imagem de logo.
+2. Ajuste as cores e tamanhos conforme necessário.
+3. Modifique o texto de introdução no JavaScript, se desejar.
+
+Lembre-se de que o conteúdo principal do portfólio (dentro da div `#main-content`) deve incluir todo o HTML que forneci
+anteriormente, desde a `<nav>` até o `<footer>`.
+
+        Esta implementação oferece uma introdução interativa e atraente ao seu portfólio, criando uma experiência de
+        usuário única e memorável.-->

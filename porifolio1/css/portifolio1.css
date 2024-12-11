@@ -1,0 +1,146 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 200%;
+    /* Para permitir o scroll */
+    box-sizing: border-box;
+    overflow: auto;
+    /* Para evitar overflow escondido */
+}
+
+.container-fluid {
+    height: 100vh;
+}
+
+/* Configuração inicial do h3 */
+.title {
+    display: none;
+    /*margin-top: 20px;
+    /* Espaço abaixo da logo */
+    /*font-size: 3em;
+    opacity: 0;*/
+    /* Começa invisível */
+    transition: all 0.5s ease-in-out;
+    /* Transição suave */
+}
+
+/* Efeito de scroll para o h3 */
+.title-small {
+    font-size: 1.5em;
+    margin-left: 10px;
+    opacity: 1;
+    /* Visível após o scroll */
+}
+
+/* Configuração da div class .logo para o surgimento suave. */
+.logo {
+    position: relative;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    z-index: 1;
+}
+
+.logo:before {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 100%;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    filter: blur(10px);
+}
+
+.logo img {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6), 0 10px 20px rgba(0, 0, 0, 0.4), 0 15px 25px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+/* A Imagem da logo */
+#logo {
+    width: 40em;
+    height: 40em;
+    border-radius: 50%;
+    /*transform:opacity(1);*/
+    transition: all 0.9s;
+}
+
+.avatar{
+    /*position:absolute;*/
+    /*width: 40em;
+    height: 40em;
+    border-radius: 50%;
+    transform:opacity(1);*/
+    /*transition: all 0.9s;*/
+    margin-top:20%;
+    margin-left:36%;
+
+}
+
+/*.logo-small {
+    width: 5em;
+    height: 5em;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    transform: none;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+}*/
+
+/* Ajuste para logo e título pequenos */
+/*.logo-small~.title-small {
+    font-size: 1.5em;
+    margin-left: 10px;
+    opacity: 1;
+}*/
+
+.typing-effect {
+    font-family: 'Courier New', monospace;
+    font-size: 24px;
+    color: #ffffff;
+    border-right: 2px solid #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 8s steps(89) 0.5s 1 normal both, blink-caret 0.5s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: white;
+    }
+}
+
+/*Conteudo para teste de rolagem*/
+#scroll-content {
+    /*display: none;*/
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    min-height: 100vh;
+    /* Garante que a rolagem será ativada */
+}
+
+#scroll-content.visible {
+    display: block;
+    opacity: 1;
+}

@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    overflow: auto;
+}
+
+
+.container-fluid {
+    height: 100vh;
+}
+
+/*Configuração da div class .logo para o seu surgimentop suave.*/
+.logo {
+    position: relative;
+    /*Necessário esta position para que o pseudo elemento before o enxergue como elemento pai*/
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+    z-index: 1;
+}
+
+.logo:before {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 100%;
+    height: 20px;
+    background: rgba(0, 0, 0.3);
+    border-radius: 50%;
+    /*z-index: -1;*/
+    filter: blur(10px);
+}
+
+.logo img {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6),
+        0 10px 20px rgba(0, 0, 0, 0.4),
+        0 15px 25px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+
+
+
+/*A Imagem da logo*/
+#logo {
+    width: 40em;
+    height: 40em;
+    border-radius: 50%;    
+    transition: all 0.5s ease-in-out;
+    /* Animação suave */
+}
+
+
+.logo-small {
+    width: 5em;
+    height: 5em;
+    position: fixed;
+    /* Para fixar a logo enquanto rola a página */
+    top: 10px;
+    left: 10px;
+    transform: none;
+    /* Remove o translate quando fica pequeno */
+    opacity: 1;
+    /* Garante que a logo fique visível */
+    transition: all 0.5s ease-in-out;
+}
+
+
+
+
+
+.typing-effect {
+    font-family: 'Courier New', monospace;
+    font-size: 24px;
+    color: #ffffff;
+    border-right: 2px solid #ffffff;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 8s steps(89) 0.5s 1 normal both, blink-caret 0.5s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: white;
+    }
+}
+
+/*Conteudo para teste de rolagem*/
+#scroll-content {
+    /*display: none;*/
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    min-height: 100vh;
+    /* Garante que a rolagem será ativada */
+}
+
+#scroll-content.visible {
+    display: block;
+    opacity: 1;
+}

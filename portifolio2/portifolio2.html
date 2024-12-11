@@ -1,0 +1,277 @@
+Certamente! Vou criar um template de portfólio de desenvolvedor web moderno e criativo usando Bootstrap 5. Este template
+incluirá seções para apresentação pessoal, habilidades, projetos e contato. Vou utilizar alguns componentes do Bootstrap
+e adicionar um toque criativo com animações simples e um design clean.
+
+Aqui está o código HTML com Bootstrap e algumas personalizações CSS:
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de Desenvolvedor Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--secondary-color);
+        }
+
+        .bg-primary-custom {
+            background-color: var(--primary-color);
+        }
+
+        .text-primary-custom {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .skill-item {
+            transition: transform 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card img {
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Meu Portfólio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#habilidades">Habilidades</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projetos">Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="container text-center">
+            <h1 class="mb-4">Olá, eu sou <span class="text-primary-custom">Seu Nome</span></h1>
+            <p class="lead mb-4">Desenvolvedor Web Full Stack</p>
+            <a href="#contato" class="btn btn-light btn-lg">Entre em Contato</a>
+        </div>
+    </section>
+
+    <section id="sobre" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Sobre Mim</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Sou um desenvolvedor web apaixonado por criar experiências digitais incríveis. Com experiência em
+                        front-end e back-end, estou sempre buscando aprender novas tecnologias e aprimorar minhas
+                        habilidades.</p>
+                </div>
+                <div class="col-md-6">
+                    <p>Minha abordagem é centrada no usuário, focando em designs responsivos e intuitivos. Acredito que
+                        a colaboração é fundamental para o sucesso de qualquer projeto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="habilidades" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Minhas Habilidades</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card skill-item">
+                        <div class="card-body text-center">
+                            <i class="fas fa-code fa-3x mb-3 text-primary-custom"></i>
+                            <h5 class="card-title">HTML/CSS</h5>
+                            <p class="card-text">Criação de layouts responsivos e estilização avançada.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card skill-item">
+                        <div class="card-body text-center">
+                            <i class="fab fa-js fa-3x mb-3 text-primary-custom"></i>
+                            <h5 class="card-title">JavaScript</h5>
+                            <p class="card-text">Desenvolvimento de aplicações web interativas e dinâmicas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card skill-item">
+                        <div class="card-body text-center">
+                            <i class="fab fa-react fa-3x mb-3 text-primary-custom"></i>
+                            <h5 class="card-title">React</h5>
+                            <p class="card-text">Construção de interfaces de usuário modernas e eficientes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projetos" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Projetos Recentes</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card project-card">
+                        <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Projeto 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Projeto 1</h5>
+                            <p class="card-text">Uma breve descrição do projeto e das tecnologias utilizadas.</p>
+                            <a href="#" class="btn btn-primary">Ver Projeto</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card project-card">
+                        <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Projeto 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Projeto 2</h5>
+                            <p class="card-text">Uma breve descrição do projeto e das tecnologias utilizadas.</p>
+                            <a href="#" class="btn btn-primary">Ver Projeto</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card project-card">
+                        <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Projeto 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Projeto 3</h5>
+                            <p class="card-text">Uma breve descrição do projeto e das tecnologias utilizadas.</p>
+                            <a href="#" class="btn btn-primary">Ver Projeto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Seu Nome">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Seu Email">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="4" placeholder="Sua Mensagem"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <p>Sinta-se à vontade para entrar em contato comigo para discutir oportunidades de trabalho,
+                        colaborações ou apenas para trocar ideias sobre desenvolvimento web.</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope me-2"></i> seuemail@exemplo.com</li>
+                        <li><i class="fas fa-phone me-2"></i> (00) 12345-6789</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Sua Cidade, Estado</li>
+                    </ul>
+                    <div class="mt-4">
+                        <a href="#" class="me-3 text-dark"><i class="fab fa-github fa-2x"></i></a>
+                        <a href="#" class="me-3 text-dark"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <a href="#" class="text-dark"><i class="fab fa-twitter fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Seu Nome. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+```
+
+<!--Este template inclui:
+
+1. Uma barra de navegação fixa no topo.
+2. Uma seção hero com uma apresentação breve.
+3. Seções para "Sobre", "Habilidades", "Projetos" e "Contato".
+4. Um design responsivo que se adapta a diferentes tamanhos de tela.
+5. Animações sutis nos cards de habilidades e projetos.
+6. Um formulário de contato e informações de contato.
+7. Ícones do Font Awesome para melhorar o visual.
+
+Para usar este template, você precisará:
+
+1. Substituir "Seu Nome" pelo seu nome real.
+2. Adicionar suas próprias informações nas seções "Sobre", "Habilidades" e "Projetos".
+3. Substituir os placeholders de imagem (https://via.placeholder.com/350x200) por imagens reais dos seus projetos.
+4. Atualizar as informações de contato e links de redes sociais.
+
+Este template oferece uma base sólida que você pode personalizar ainda mais de acordo com seu estilo pessoal e necessidades específicas. Você pode ajustar as cores, fontes e layouts conforme desejar para torná-lo verdadeiramente único.
+
+Gostaria que eu explicasse alguma parte específica do código ou fizesse alguma modificação?-->
